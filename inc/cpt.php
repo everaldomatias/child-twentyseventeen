@@ -15,6 +15,7 @@ function child_cpt_glossary() {
 	      	'supports'		=> array( 'author', 'title', 'editor', 'thumbnail' ),
 	    	'public' 		=> true,
 	    	'has_archive'	=> true,
+	    	'rewrite'		=> array( 'slug' => 'glossario' )
 	    )
 	);
 }
