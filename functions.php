@@ -3,6 +3,11 @@
 * Functions by child theme from twentyseventeen
 */
 
+/*
+ * Includes
+ */
+
+require_once( get_stylesheet_directory() . '/inc/cpt.php' );
 
 /*
 * Enqueue scripts
