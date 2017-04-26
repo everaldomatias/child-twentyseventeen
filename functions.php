@@ -7,7 +7,23 @@
  * Includes
  */
 
+/*
+ * Custom Post Types and Custom Taxonomies
+ */
 require_once( get_stylesheet_directory() . '/inc/cpt.php' );
+
+
+/*
+* Add GoogleAnalytics if exist file inc/ga.php
+*/
+add_action( 'wp_head', 'child_add_googleanalytics' );
+function child_add_googleanalytics() {
+	$file = get_stylesheet_directory() . '/inc/ga.php';
+	if ( file_exists( $file ) ) {
+		require_once( $file );
+	}
+}
+
 
 /*
 * Enqueue scripts
@@ -18,6 +34,7 @@ function child_theme_enqueue_styles() {
 	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/assets/css/child-style.css', 'parent-style', false );
 }
 
+
 /*
 * Remove WordPress version
 */
@@ -27,6 +44,7 @@ function child_remove_version() {
 add_filter( 'the_generator', 'child_remove_version' );
 remove_action('wp_head', 'wp_generator' );
 
+
 /*
 * Remove erros by login
 */
@@ -34,6 +52,7 @@ function child_remove_errors_login(){
 	return 'Algo errado... tente novamente!';
 }
 add_filter( 'login_errors', 'child_remove_errors_login' );
+
 
 /*
 * Change default image link to None
@@ -46,6 +65,7 @@ function child_imagelink_setup() {
 	}
 }
 add_action( 'admin_init', 'child_imagelink_setup', 10 );
+
 
 /*
 * Add author box in posts
